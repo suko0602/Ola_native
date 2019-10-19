@@ -5,10 +5,7 @@ Rails.application.routes.draw do
     :registrations => "users/registrations",
     :passwords     => "users/passwords",
   }
-
-  namespace :profiles do
-    resources :users
-  end
-
-  resources :users, :only => [:show], as: :mypage
+  resources :profiles, only: %i(show edit update) 
+  resources :questions
+  resources :answers 
 end

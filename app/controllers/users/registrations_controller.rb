@@ -11,12 +11,12 @@ class Users::RegistrationsController < Devise::RegistrationsController
     if current_user.update(account_update_params)
         redirect_to mypage_path(current_user), notice: 'プロフィールを更新しました'
     else
-      render :edit_profile
+        render :edit_profile
     end
   end 
   
   def after_sign_up_path_for(resource)
-    edit_profile_user_path(current_user)
+    edit_profile_path(current_user)
   end
 
   protected

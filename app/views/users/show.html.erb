@@ -1,4 +1,4 @@
 <% provide(:title, @user.id) %>
 <h1>My page(<%= @user.id %>)</h1>
 	
-<%= link_to 'プロフィール編集', edit_profile_user_path %>
+<%= link_to 'プロフィール編集', edit_profile_user_path(current_user) %>
