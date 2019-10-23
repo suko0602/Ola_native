@@ -1,9 +1,12 @@
 class QuestionsController < ApplicationController
+  before_action :set_question, only: %i(show edit update destroy) 
+
   def index
-    @questions = Question.all 
+    @questions = Question.page(params[:page]).per(2)
   end
 
   def show
+    @answer = @question.answers.build
   end
 
   def new
@@ -11,30 +14,36 @@ class QuestionsController < ApplicationController
   end
 
   def create 
-    @question = Question.new(question_params)
-    @question.save
-    redirect_to root_url, notice: "質問を投稿しました。"
+    @question = current_user.questions.build(question_params)
+    @question.user_id = current_user.id
+    if @question.save
+      redirect_to questions_path, notice: "質問を投稿しました。"
+    else
+      render :new
+    end
   end
 
   def edit 
-    @question = Question.find(params[:id])
   end
 
   def update 
-    @question = Question.find(params[:id])
     @question.update(question_params)
-    redirect_to home_url, notice: "質問を更新しました。"
+    redirect_to questions_path, notice: "質問を更新しました。"
   end
 
   def destroy 
-    @question = Question.find(params[:id])
     @question.destroy
-    redirect_to questions_url, notice: "質問を削除しました。"
+    redirect_to questions_path, notice: "質問を削除しました。"
   end
 
-  private
+    private
+    
+    def set_question
+      @question = Question.find(params[:id])
+    end
 
-  def question_params
-    params.require(:question).permit(:user_id)
-  end
+    def question_params
+      params.require(:question).permit(:title, :body)
+    end
+    
 end

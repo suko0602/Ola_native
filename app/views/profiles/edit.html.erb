@@ -1,4 +1,4 @@
-<h1>プロフィール編集画面</h1>
+<h1>プロフィール編集</h1>
 <%= form_for current_user, url: {action: 'update'} do |f| %>
  
   <div class="field">
@@ -7,7 +7,7 @@
   </div>
  
   <div class="actions">
-    <%= f.submit "Update" %>
+    <%= f.submit "update" %>
   </div>
 <% end %>
-<p>Find me in app/views/profiles/edit.html.erb</p>
+<%= link_to 'ログアウト', new_user_session_path %>

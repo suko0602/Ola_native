@@ -1,0 +1,25 @@
+doctype html
+html
+  head
+    title
+      | OlaNative
+    = csrf_meta_tags
+    = csp_meta_tag
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+  body
+    .app-title.navbar.navbar-expand-lg.navbar-light.bg-secondary
+      .navbar-brand Ola_Native
+
+      ul.navbar-nav.ml-auto 
+        - if user_signed_in?
+          li.nav-item= link_to 'ホーム', root_path, class: 'nav-link'
+          li.nav-item= link_to '質問投稿', new_question_path, class: 'nav-link'
+          li.nav-item= link_to 'プロフィール編集', edit_profile_path(current_user), class: 'nav-link'
+        - else
+          li.nav-item= link_to 'ログイン', user_session_path, class: 'nav-link'
+    .container
+      - if flash.notice.present?
+        .alert.alert-warning= flash.notice
+      = yield
+

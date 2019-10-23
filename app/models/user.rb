@@ -9,6 +9,7 @@ class User < ApplicationRecord
   before_create :build_default_profile
   has_many :questions, dependent: :destroy
   accepts_nested_attributes_for :questions 
+  has_many :answers 
 
   private
   def build_default_profile
