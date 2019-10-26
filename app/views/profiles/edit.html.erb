@@ -10,4 +10,4 @@
     <%= f.submit "update" %>
   </div>
 <% end %>
-<%= link_to 'ログアウト', new_user_session_path %>
+<%= link_to 'ログアウト', destroy_user_session_path, method: :delete %>

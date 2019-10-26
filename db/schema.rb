@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(version: 2019_10_22_013227) do
     t.integer "sequential_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text "content"
     t.index ["question_id", "sequential_id"], name: "index_answers_on_question_id_and_sequential_id", unique: true
     t.index ["question_id"], name: "index_answers_on_question_id"
   end

@@ -9,6 +9,10 @@ class ApplicationController < ActionController::Base
     root_path
   end
   
+  def after_sign_out_path_for(resource)
+    user_session
+  end
+
   def user_info(user_id)
     User.find(user_id)
   end 

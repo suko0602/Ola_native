@@ -1,4 +1,3 @@
-<h1>編集</h1>
 <%= form_with model: @question do |f| %>
   <p>
     <%= f.label :title, "タイトル" %><br>
@@ -15,8 +14,10 @@
      <span class="has_error"><%= @question.errors[:body].first %></span>
     <% end %>
   </p>
- 
-  <p>
-    <%= f.submit %>
-  </p>
-<% end %>
+
+    <h5>コメント</h5>
+  <%= form_with model: @answer do |f| %>
+   <p>
+     <%= f.text_area :content, cols: 60, rows: 7 %>
+   </p>
+  <% end %>

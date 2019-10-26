@@ -2,11 +2,12 @@ class QuestionsController < ApplicationController
   before_action :set_question, only: %i(show edit update destroy) 
 
   def index
-    @questions = Question.page(params[:page]).per(2)
+    @questions = Question.page(params[:page]).per(5)
   end
 
   def show
-    @answer = @question.answers.build
+    @answers = @question.answers
+    @answer = Answer.new
   end
 
   def new
@@ -15,7 +16,6 @@ class QuestionsController < ApplicationController
 
   def create 
     @question = current_user.questions.build(question_params)
-    @question.user_id = current_user.id
     if @question.save
       redirect_to questions_path, notice: "質問を投稿しました。"
     else
@@ -24,6 +24,7 @@ class QuestionsController < ApplicationController
   end
 
   def edit 
+    
   end
 
   def update 

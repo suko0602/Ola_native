@@ -1,4 +1,11 @@
-<%= form_with(model: [@question, @answer], local: true) do |f| %>
-  <%= f.text_field :content %>
-  <%= f.submit "コメントする", class: "btn btn-primary" %>
-<% end %>
+<%= form_for [@question, @answer] do |f| %>
+  <%= f.text_area :content, cols: 60, rows: 8 %>
+  <br>
+  <%= f.submit 'コメントする' %>
+
+
+  <div style="float:right">
+    <%= link_to 'トップページに戻る', root_path %>
+  </div>
+
+ <% end %>
