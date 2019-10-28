@@ -1,11 +1,9 @@
-<%= form_for [@question, @answer] do |f| %>
-  <%= f.text_area :content, cols: 60, rows: 8 %>
-  <br>
-  <%= f.submit 'コメントする' %>
-
-
-  <div style="float:right">
-    <%= link_to 'トップページに戻る', root_path %>
+  <div>
+    <h4>コメント</h4>
+    <div id="answers_area">
+      <%= render partial: 'answers/index', locals: { answers: @answers } %>
+    </div>  
+    <% if user_signed_in? %>
+      <%= render partial: 'answers/form', locals: { answer: @answer, question: @question } %>
+    <% end %>
   </div>
-
- <% end %>

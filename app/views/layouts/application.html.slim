@@ -16,7 +16,7 @@ html
           li.nav-item= link_to 'ホーム', questions_path, class: 'nav-link'
           li.nav-item= link_to '質問投稿', new_question_path, class: 'nav-link'
           li.nav-item= link_to 'プロフィール', profile_path(current_user), class: 'nav-link'
-          li.nav-item= link_to 'ログアウト', destroy_user_session_path(current_user), delete: :method, class: 'nav-link'
+          li.nav-item= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'nav-link'
         - else
           li.nav-item= link_to 'ログイン', user_session_path, class: 'nav-link'
     .container

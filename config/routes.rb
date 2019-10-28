@@ -12,9 +12,8 @@ Rails.application.routes.draw do
     resources :answers, only: [:create, :destroy]
   end
   
-  #resources :reactions, :except => [:new]
-  get 'questions' => 'questions#index'
-  get 'answers/new/:questionId' => 'answers#new'
-  get 'reactions/new/:answerId' => 'reactions#new'
+  #get 'questions' => 'questions#index'
+  #get 'answers/new/:questionId' => 'answers#new'
+  #get 'reactions/new/:answerId' => 'reactions#new'
 
 end
