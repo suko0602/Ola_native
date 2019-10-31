@@ -6,10 +6,10 @@ Rails.application.routes.draw do
     :registrations => "users/registrations",
     :passwords     => "users/passwords",
   }
-
+  
   resources :profiles, only: %i(show edit update) 
   resources :questions do 
-    resources :answers, only: [:create, :destroy]
+    resources :answers, only: %i(create destroy)
   end
   
   #get 'questions' => 'questions#index'

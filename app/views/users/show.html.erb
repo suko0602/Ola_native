@@ -1,4 +1,15 @@
 <% provide(:title, @user.id) %>
 <h1>My page(<%= @user.id %>)</h1>
-	
+
+  <div class="circle-avatar">
+    <% if current_user.persisted? && current_user.avatar? %>
+      <%= image_tag current_user.avatar.to_s %>
+      <label><%= f.check_box :remove_avatar %> 画像を削除</label>
+    <% else %>
+      <%= image_tag 'no_avatar.png' %>
+      <%= f.hidden_field :avatar_cache %>
+    <% end %>
+      <%= f.file_field :avatar %>
+  </div>
+  
 <%= link_to 'プロフィール編集', edit_profile_user_path(current_user) %>

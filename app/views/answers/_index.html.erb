@@ -1,9 +1,9 @@
 <% answers.each do |answer| %>
   <% unless answer.id.nil? %>
-    <p><%= link_to "#{answer.user.name}さん", user_path(answer.user.id) %></p>
+    <p><%= link_to "#{answer.user.id}さん", profile_path(answer.user.id) %></p>
     <p>コメント：<%= answer.content %></p>
     <% if answer.user == current_user %>
-      <p><%= link_to 'コメントを削除する', question_answer_path(answer.question_id, answer.id), method: :delete, remote: true %></p>
+      <p><%= link_to '削除する', question_answer_path(answer.question_id, answer.id), method: :delete, remote: true %></p>
     <% end %>
   <% end %>
 <% end %>
