@@ -1,0 +1,5 @@
+div
+  #answers_area
+    = render partial: 'answers/answer', locals: { answers: @answers }
+  - if user_signed_in?
+    = render partial: 'answers/form', locals: { answer: @answer, question: @question }

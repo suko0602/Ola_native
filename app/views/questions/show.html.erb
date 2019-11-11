@@ -1,9 +1,0 @@
-  <div>
-    <h4>コメント</h4>
-    <div id="answers_area">
-      <%= render partial: 'answers/index', locals: { answers: @answers } %>
-    </div>  
-    <% if user_signed_in? %>
-      <%= render partial: 'answers/form', locals: { answer: @answer, question: @question } %>
-    <% end %>
-  </div>

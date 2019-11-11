@@ -6,11 +6,12 @@ Rails.application.routes.draw do
     :registrations => "users/registrations",
     :passwords     => "users/passwords",
   }
-  
+  resources :users 
   resources :profiles, only: %i(show edit update) 
   resources :questions do 
     resources :answers, only: %i(create destroy)
   end
+  #resources :likes, only: %i(create destroy)
   
   #get 'questions' => 'questions#index'
   #get 'answers/new/:questionId' => 'answers#new'

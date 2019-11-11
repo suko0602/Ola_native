@@ -1,0 +1,21 @@
+
+- answers.each do |answer|
+  - unless answer.nil?
+    p
+      = link_to "#{answer.user.name}さん", profile_path(current_user)
+    p
+      | コメント：
+      = answer.content
+    - if answer.user == current_user
+      p
+        = link_to '削除する', question_answer_path(answer.question_id, answer.id), method: :delete, remote: true
+
+li data-answer-id="#{@answer.id}" id="answer-#{@answer.id}" 
+  | \.
+  | \.
+  | \.
+  span.timestamp
+    | \.
+    | \.
+    | \.
+  = render "likes/like", answer: @answer 

@@ -11,6 +11,7 @@ class User < ApplicationRecord
   accepts_nested_attributes_for :questions 
   has_many :answers 
   mount_uploader :avatar, AvatarUploader
+  has_many :likes, dependent: :destroy 
 
   private
   def build_default_profile

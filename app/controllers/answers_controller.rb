@@ -4,15 +4,18 @@ class AnswersController < ApplicationController
     @question = Question.find(params[:question_id])
     @answer = @question.answers.build(answer_params)
     @answer.user_id = current_user.id
-    if @answer.save
-      render :index
-    end
+      respond_to do |format|
+        if @answer.save
+          format.js { render :answer }
+          format.html { redirect_to @answer, notice: '完了しました'}
+        end 
+      end 
   end  
   
   def destroy 
     @answer = Answer.find(params[:id])
     if @answer.destroy
-      render :index
+      render :answer
     end
   end
 
@@ -21,4 +24,3 @@ class AnswersController < ApplicationController
       params.require(:answer).permit(:content, :question_id, :user_id)
     end
 end 
-
