@@ -1,25 +1,27 @@
 class LikesController < ApplicationController
-  before_action :logged_in_user
+  before_action :set_like, only: %(:create)
+  before_action :set_answer, only: %(:create)
 
   def create
-    @answer = Answer.find(params[:answer_id])
-    unless @answer.iine?(current_user)
-      @answer.iine(current_user)
-      respond_to do |format|
-        format.html { redirect_to request.referrer || root_url }
-        format.js 
-      end
-    end
-  end
-
-  def destroy
-    @answer = Answer.find(params[:id]).answer
-    if @ansewer.iine?(current_user)
-      @answer.uniine(current_user)
-      respond_to do |format|
-        format.html { redirect_to request.referrer || root_url }
-        format.js
-      end
+    if @like 
+      @like.destroy
+      return head: :ok 
+    end  
+  
+    if @like.save
+      head: :ok 
+    else  
+      head: :ng 
     end 
-  end
+  end 
+
+  private 
+ 
+  def set_like 
+    @like = Like.find_or_initialie_by(user: current_user, answer: @answer)
+  end 
+
+  def set_answer 
+    @answer = Answer.find(params[:answer_id])
+  end 
 end

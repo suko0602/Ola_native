@@ -11,7 +11,8 @@ Rails.application.routes.draw do
   resources :questions do 
     resources :answers, only: %i(create destroy)
   end
-  #resources :likes, only: %i(create destroy)
+  post '/answers/:answer_id/likes' => "likes#create"
+  delete '/answers/:answer_id/likes' => "likes#destroy"
   
   #get 'questions' => 'questions#index'
   #get 'answers/new/:questionId' => 'answers#new'

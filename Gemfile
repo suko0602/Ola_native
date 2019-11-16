@@ -25,6 +25,10 @@ gem 'kaminari'
 gem 'jquery-rails'
 gem 'carrierwave'
 gem 'mini_magick'
+gem 'material_icons'
+gem 'materialize-sass'
+gem 'seed-fu'
+
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

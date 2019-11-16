@@ -6,16 +6,20 @@ class User < ApplicationRecord
 
   has_one :profile, dependent: :destroy
   accepts_nested_attributes_for :profile
-  before_create :build_default_profile
   has_many :questions, dependent: :destroy
-  accepts_nested_attributes_for :questions 
   has_many :answers 
-  mount_uploader :avatar, AvatarUploader
   has_many :likes, dependent: :destroy 
 
+  mount_uploader :avatar, AvatarUploader
+
+  before_create :build_default_profile
+
+  
   private
+
   def build_default_profile
     build_profile 
     true
   end
+
 end

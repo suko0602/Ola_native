@@ -6,10 +6,9 @@ class ProfilesController < ApplicationController
 
   def update
     if current_user.update(account_update_params)
-      flash[:notice] = "プロフィールを変更しました。 "
-      redirect_to profile_path(current_user)
+      redirect_to profile_path(current_user), notice: "#{current_user.name}のプロフィールを変更しました。"
     else 
-      render edit_profile_path 
+      render :edit  
     end 
   end
 
