@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   before_action :set_user, only: %i(show edit)
 
   def user_params
-    parmas.require(:user).permit(:name, :email, :password, :avatar)
+    parmas.require(:user).permit(:name, :email, :password, :avatar, :language_id)
   end
 
   def set_user

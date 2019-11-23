@@ -1,8 +1,9 @@
 - if Like.find_by(user_id: current_user.id, answer_id: answer.id)
-  = link_to "/answers/#{answer.id}/likes", method: :delete
-  i.material-icons
-    | star
+  = link_to answer_like_path(answer.id), method: :delete, remote: true do  
+   .material-icons
+    | favorite 
 - else
-  = link_to "/answers/#{answer.id}/likes", method: :post
-  i.material-icons
-    | star_border
+  = link_to answer_likes_path(answer.id), method: :post, remote: true do  
+   .material-icons
+    | favorite_border
+= answer.likes.length

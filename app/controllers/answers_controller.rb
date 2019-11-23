@@ -1,14 +1,13 @@
 class AnswersController < ApplicationController
-
   def create
     @question = Question.find(params[:question_id])
-    @answer = @question.answers.build(answer_params, user: current_user)
+    @answer = current_user.answers.build(content: answer_params[:content], question: @question)
     respond_to do |format|
       if @answer.save
         format.js { render :answer }
         format.html { redirect_to @answer, notice: '完了しました'}
       else  
-        format.js { head:ng }
+        format.js { head :ng }
         format.html { render :new }
       end 
     end 
@@ -16,11 +15,15 @@ class AnswersController < ApplicationController
   
   def destroy 
     @answer = Answer.find(params[:id])
-    redirect_to answers_path 
+    @answer.destroy 
+    redirect_to answers_path, notice: "削除しました。"
   end
-
+  
+  def reply 
+    @answer = Answer.new 
+  end
   private 
     def answer_params
-      params.require(:answer).permit(:content, :question_id, :user_id)
+      params.require(:answer).permit(:content)
     end
 end 

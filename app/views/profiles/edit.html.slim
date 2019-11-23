@@ -11,9 +11,14 @@ h1
       = f.file_field current_user.avatar.url
     - else
       = f.file_field("/images/no-image.png")
+  .form-group 
+    = f.label :母語
+    br
+    = collection_select(@user, :languages_id, Language.all, :id, :name, :prompt => "選択してください")
   .form-group
     = f.label :自己紹介
     br
     = f.text_area :introduction, cols: 30, rows: 2
   .actions
     = f.submit "完了"
+

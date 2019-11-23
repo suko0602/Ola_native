@@ -1,1 +1,1 @@
-$("#like_btn").html("<%= escape_javascript(render partial: 'likes/like', locals: { answer: @answer }) %>")
+$("#like-<%= @answer.id %>").html("<%= j(render partial: 'likes/like', locals: { answer: @answer }) %>");

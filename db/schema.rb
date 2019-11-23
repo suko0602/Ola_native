@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_15_122820) do
+ActiveRecord::Schema.define(version: 2019_11_20_060007) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,10 +33,27 @@ ActiveRecord::Schema.define(version: 2019_11_15_122820) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "interest_countries", force: :cascade do |t|
+    t.string "name"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_interest_countries_on_user_id"
+  end
+
   create_table "languages", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "learning_languages", force: :cascade do |t|
+    t.string "name"
+    t.integer "level"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_learning_languages_on_user_id"
   end
 
   create_table "likes", force: :cascade do |t|
@@ -47,6 +64,15 @@ ActiveRecord::Schema.define(version: 2019_11_15_122820) do
     t.index ["answer_id"], name: "index_likes_on_answer_id"
     t.index ["user_id", "answer_id"], name: "index_likes_on_user_id_and_answer_id", unique: true
     t.index ["user_id"], name: "index_likes_on_user_id"
+  end
+
+  create_table "native_languages", force: :cascade do |t|
+    t.string "name"
+    t.integer "level"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_native_languages_on_user_id"
   end
 
   create_table "profiles", force: :cascade do |t|
@@ -96,10 +122,22 @@ ActiveRecord::Schema.define(version: 2019_11_15_122820) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  create_table "well_known_countries", force: :cascade do |t|
+    t.string "name"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_well_known_countries_on_user_id"
+  end
+
   add_foreign_key "answers", "questions"
   add_foreign_key "answers", "users"
+  add_foreign_key "interest_countries", "users"
+  add_foreign_key "learning_languages", "users"
+  add_foreign_key "native_languages", "users"
   add_foreign_key "profiles", "users"
   add_foreign_key "questions", "users"
   add_foreign_key "reactions", "answers"
   add_foreign_key "reactions", "users"
+  add_foreign_key "well_known_countries", "users"
 end

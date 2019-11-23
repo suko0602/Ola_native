@@ -12,6 +12,19 @@ h1
     br
     = f.text_field :name
   .form-group
+    = f.label :language_id
+    br
+  
+  .form-group 
+    = f.label :学んでいる言語
+    =
+  .form-group 
+    = f.label :詳しい国
+    
+  .form-group 
+    = f.label :興味のある国
+    
+  .form-group
     = f.label :自己紹介　
     br
     = f.text_area :introduction, cols: 30, rows: 2
