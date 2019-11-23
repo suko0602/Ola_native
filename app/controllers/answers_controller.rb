@@ -19,7 +19,7 @@ class AnswersController < ApplicationController
     redirect_to answers_path, notice: "削除しました。"
   end
   
-  def reply 
+  def create  
     @answer = Answer.new 
   end
   private 
