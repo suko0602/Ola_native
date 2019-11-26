@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_20_060007) do
+ActiveRecord::Schema.define(version: 2019_11_26_042813) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(version: 2019_11_20_060007) do
     t.datetime "updated_at", null: false
     t.text "content"
     t.bigint "user_id"
+    t.integer "parent_answer_id"
     t.index ["question_id", "sequential_id"], name: "index_answers_on_question_id_and_sequential_id", unique: true
     t.index ["question_id"], name: "index_answers_on_question_id"
     t.index ["user_id"], name: "index_answers_on_user_id"
@@ -69,10 +70,8 @@ ActiveRecord::Schema.define(version: 2019_11_20_060007) do
   create_table "native_languages", force: :cascade do |t|
     t.string "name"
     t.integer "level"
-    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_native_languages_on_user_id"
   end
 
   create_table "profiles", force: :cascade do |t|
@@ -81,6 +80,7 @@ ActiveRecord::Schema.define(version: 2019_11_20_060007) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.text "introduction"
+    t.string "language_id"
     t.index ["user_id"], name: "index_profiles_on_user_id"
   end
 
@@ -134,7 +134,6 @@ ActiveRecord::Schema.define(version: 2019_11_20_060007) do
   add_foreign_key "answers", "users"
   add_foreign_key "interest_countries", "users"
   add_foreign_key "learning_languages", "users"
-  add_foreign_key "native_languages", "users"
   add_foreign_key "profiles", "users"
   add_foreign_key "questions", "users"
   add_foreign_key "reactions", "answers"

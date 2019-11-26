@@ -1,10 +1,10 @@
 h1
   | プロフィール
-= form_for(@user) do |f|
+= form_with model: @user do |f|
   |  　
   .form-group
     - if @user.avatar?
-      = image_tag @user.avatar.url
+      = image_tag current_user.avatar.url
     - else
       = image_tag("default.jpg")
   .from-group
@@ -12,9 +12,8 @@ h1
     br
     = f.text_field :name
   .form-group
-    = f.label :language_id
+    = f.label :母国語
     br
-  
   .form-group 
     = f.label :学んでいる言語
     =

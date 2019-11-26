@@ -14,7 +14,17 @@ h1
   .form-group 
     = f.label :母語
     br
+    = collection_select(@user, :language_id, Language.all, :id, :name, :prompt => "選択してください")
+  .form-group
+    = f.label :学んでいる言語
+    br
     = collection_select(@user, :languages_id, Language.all, :id, :name, :prompt => "選択してください")
+  .form-group 
+    = f.label :詳しい国
+    br
+  .form-group 
+    = f.label :興味のある国
+    br
   .form-group
     = f.label :自己紹介
     br

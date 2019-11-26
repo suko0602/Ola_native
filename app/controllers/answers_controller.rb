@@ -16,13 +16,11 @@ class AnswersController < ApplicationController
   def destroy 
     @answer = Answer.find(params[:id])
     @answer.destroy 
-    redirect_to answers_path, notice: "削除しました。"
+    redirect_to questions_path, notice: "削除しました。"
   end
   
-  def create  
-    @answer = Answer.new 
-  end
   private 
+
     def answer_params
       params.require(:answer).permit(:content)
     end

@@ -5,19 +5,19 @@ class LikesController < ApplicationController
     @like = @answer.likes&.find_by(user: current_user)
     if @like
       @like.destroy
-      return head :ok 
+      head :ok 
     else   
       @like = @answer.likes.build(user: current_user)
-      if @like.save
-        return head :ok 
-      else  
-        head :ng 
-      end
+      return head :ok if @like.save
+      head :unprocessable_entity
     end 
   end 
-
+ 
+  
   private 
+
     def set_answer 
-        @answer = Answer.find(params[:answer_id])
+      @answer = Answer.find(params[:answer_id])
     end 
+
 end
