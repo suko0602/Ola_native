@@ -3,18 +3,24 @@ h1
 = form_for current_user, url: {action: 'update'} do |f|
 
   .form-group
+    - if current_user.avatar?
+      = image_tag current_user.avatar.url 
+      label
+      br
+      = f.check_box :remove_avatar
+      |  画像を削除
+    - else 
+      = image_tag 'fallback/default_user_avatar.png'
+    br
+    = f.file_field :avatar 
+  .form-group
     = f.label :name
     br
     = f.text_field :name
-  .form-group
-    - if current_user.avatar?
-      = f.file_field current_user.avatar.url
-    - else
-      = f.file_field("/images/no-image.png")
   .form-group 
     = f.label :母語
     br
-    = collection_select(@user, :language_id, Language.all, :id, :name, :prompt => "選択してください")
+    = collection_select(@user, :native_language_id, Language.all, :id, :name, :prompt => "選択してください")
   .form-group
     = f.label :学んでいる言語
     br
@@ -22,9 +28,12 @@ h1
   .form-group 
     = f.label :詳しい国
     br
+    = collection_select(@user, :countries_id, Country.all, :id, :name, :prompt => "選択してください")
   .form-group 
     = f.label :興味のある国
     br
+    = collection_select(@user, :countries_id, Country.all, :id, :name, :prompt => "選択してください")
+
   .form-group
     = f.label :自己紹介
     br

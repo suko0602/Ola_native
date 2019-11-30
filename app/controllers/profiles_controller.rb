@@ -13,6 +13,6 @@ class ProfilesController < ApplicationController
   end
 
   def account_update_params
-    params.require(:user).permit(:name, :avatar, :introduction)
+    params.require(:user).permit(:name, :avatar, :introduction, :avatar_cache, :remove_avatar)
   end 
 end

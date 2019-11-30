@@ -6,17 +6,16 @@ h1
     - if @user.avatar?
       = image_tag current_user.avatar.url
     - else
-      = image_tag("default.jpg")
+      = image_tag 'fallback/default_user_avatar.png'
   .from-group
     = f.label :name
     br
     = f.text_field :name
   .form-group
     = f.label :母国語
-    br
+    br 
   .form-group 
     = f.label :学んでいる言語
-    =
   .form-group 
     = f.label :詳しい国
     

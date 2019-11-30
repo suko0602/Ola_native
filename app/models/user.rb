@@ -9,6 +9,7 @@ class User < ApplicationRecord
   has_many :questions, dependent: :destroy
   has_many :answers 
   has_many :likes, dependent: :destroy 
+  has_many :like_answers, through: :likes, source: :answer
 
   mount_uploader :avatar, AvatarUploader
 

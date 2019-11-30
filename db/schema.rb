@@ -80,7 +80,7 @@ ActiveRecord::Schema.define(version: 2019_11_26_042813) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.text "introduction"
-    t.string "language_id"
+    t.integer "native_language_id"
     t.index ["user_id"], name: "index_profiles_on_user_id"
   end
 

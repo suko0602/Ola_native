@@ -1,9 +1,6 @@
-- if Like.find_by(user_id: current_user.id, answer_id: answer.id)
-  = link_to answer_like_path(answer.id), method: :delete, remote: true do  
-   .material-icons
-    | favorite 
-- else
-  = link_to answer_likes_path(answer.id), method: :post, remote: true do  
-   .material-icons
-    | favorite_border
-= answer.likes.length
+- if user_signed_in? 
+  - unless @answer.like?(current_user)
+    a#link-mark.btn.btn-primary.text-white data-answer_id="#{@answer.id}" いいね！
+  - else 
+    a#link-mark.btn.btn-primary.text-white data-answer_id="#{@answer.id}" いいねを取り消す
+= javascript_include_tag('like')

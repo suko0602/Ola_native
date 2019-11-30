@@ -21,4 +21,10 @@ br
     - if answer.user == current_user
       p
         = link_to '削除する', question_answer_path(answer.question_id, answer.id), method: :delete, remote: true
+    p
+    = form_with model: @answer, local: true do |f|
+      | 返答：
+      = f.text_field :content 
+      br
+      = f.submit "投稿"
 

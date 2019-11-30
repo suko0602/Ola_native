@@ -9,10 +9,10 @@ Rails.application.routes.draw do
   resources :users 
   resources :profiles, only: %i(show edit update) 
   resources :questions do 
-    resources :answers, only: %i(create destroy)
+    resources :answers, only: %i(create destroy) 
   end
-  resources :answers do 
-    resources :likes, only: %i(create destroy)
+  resources :answers, only: %i(create destroy) do
+    resources :likes, only: %i(create)
   end 
 
 end
