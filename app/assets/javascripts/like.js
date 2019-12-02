@@ -1,7 +1,7 @@
 $(function(){
     $('#link-mark').on('click', function(){
       $.ajax({
-        url: 'likes',
+        url: '/answers/' + $(this).data('answer_id') + '/likes',
         type: 'POST',
         data: {answer_id: $(this).data('answer_id')}
       })
