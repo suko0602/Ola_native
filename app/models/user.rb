@@ -3,6 +3,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_one :profile, dependent: :destroy
+  has_one :native_language, dependent: :destroy
   accepts_nested_attributes_for :profile
   has_many :questions, dependent: :destroy
   has_many :answers 
@@ -12,7 +13,6 @@ class User < ApplicationRecord
   mount_uploader :avatar, AvatarUploader
 
   before_create :build_default_profile
-
   
   private
 
