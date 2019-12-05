@@ -20,19 +20,19 @@ h1
   .form-group 
     = f.label :母語
     br
-    = f.collection_select(:native_language, Language.all, :id, :name, :prompt => "選択してください")
+    = f.collection_select(:native_language_id, Language.all, :id, :name, :prompt => "選択してください")
   .form-group
     = f.label :学んでいる言語
     br
-    = f.collection_select(:learning_language, Language.all, :id, :name, :prompt => "選択してください")
+    = f.collection_select(:learning_language_id, Language.all, :id, :name, :prompt => "選択してください")
   .form-group 
     = f.label :興味のある国
     br
-    = f.collection_select(:interest_country, Country.all, :id, :name, :prompt => "選択してください")
+    = f.collection_select(:interest_country_id, Country.all, :id, :name, :prompt => "選択してください")
   .form-group 
     = f.label :詳しい国
     br
-    = f.collection_select(:well_known_country, Country.all, :id, :name, :prompt => "選択してください")
+    = f.collection_select(:well_known_country_id, Country.all, :id, :name, :prompt => "選択してください")
 
   .form-group
     = f.label :自己紹介

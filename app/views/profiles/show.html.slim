@@ -1,18 +1,18 @@
 h1 プロフィール
 p アバター
-p= @user.avatar? ? image_tag(@user.avatar.url) : image_tag('fallback/default_user_avatar.png')
+p= @user&.avatar? ? image_tag(@user.avatar.url) : image_tag('fallback/default_user_avatar.png')
 p　名前　
-p= @user.name 
+p= @user&.name 
 p 母国語
-p= @user.native_language.name if @user.native_language_id
+p= @user&.native_language&.name 
 p 学んでいる言語
-p= @user.learning_language_id 
+p= @user&.learning_language&.name 
 p 興味のある国
-p= @user.interest_country_id
+p= @user&.interest_country&.name
 p 詳しい国
-p= @user.well_known_country_id 
+p= @user&.well_known_country&.name
 p 自己紹介
-p= @user.introduction 
+p= @user&.introduction 
 
 div style="float:right"
   = link_to 'プロフィール編集', edit_profile_path(current_user), class: 'btn btn-primary'
