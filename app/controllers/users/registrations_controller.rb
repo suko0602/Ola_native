@@ -3,7 +3,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
   before_action :configure_account_update_params, only: %i(create)
 
   def create 
-    super
     resource.build_profile
     resource.save 
   end 
