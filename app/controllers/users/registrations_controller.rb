@@ -3,12 +3,13 @@ class Users::RegistrationsController < Devise::RegistrationsController
   before_action :configure_account_update_params, only: %i(create)
 
   def create 
+    super
     resource.build_profile
     resource.save 
   end 
 
   def after_sign_up_path_for(resource)
-    edit_profile_path(@profile)
+    edit_profile_path(current_user)
   end
 
   protected

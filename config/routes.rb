@@ -6,8 +6,8 @@ Rails.application.routes.draw do
     :registrations => "users/registrations",
     :passwords     => "users/passwords",
   }
-  resources :users 
-  resources :profiles, only: %i(show edit update) 
+  resources :users
+  resources :profiles, only: %i(show update edit)
   resources :questions do 
     resources :answers, only: %i(create destroy) 
   end

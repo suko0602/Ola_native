@@ -1,6 +1,5 @@
 class ProfilesController < ApplicationController
-  before_action :set_profile, only: %i(show)
-
+  before_action :set_profile, only: %i(show update)
   def show
   end
   
@@ -23,6 +22,6 @@ class ProfilesController < ApplicationController
     end
 
     def account_update_params
-      params.require(:profile).permit(:name, :avatar, :avatar_cache, :remove_avatar)
+      params.require(:profile).permit(:name, :avatar, :avatar_cache, :remove_avatar, :introduction)
     end 
 end
