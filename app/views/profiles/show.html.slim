@@ -4,15 +4,15 @@ p= current_user.avatar? ? image_tag(current_user.avatar.url) : image_tag('fallba
 p　名前　
 p= @profile.name 
 p 母国語
-p= current_user.native_language&.name
+p= @user&.native_language&.name
 p 学んでいる言語
-p= current_user.learning_language&.name 
+p= @user&.learning_language&.name 
 p 興味のある国
-p= current_user.interest_country&.name
+p= @user&.interest_country&.name
 p 詳しい国
-p= current_user.well_known_country&.name
+p= @user&.well_known_country&.name
 p 自己紹介
-p= @profile.introduction 
+p= @profile&.introduction 
 
 div style="float:right"
   = link_to 'プロフィール編集', edit_profile_path(current_user), class: 'btn btn-primary'

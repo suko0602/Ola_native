@@ -27,8 +27,9 @@ class ProfileForm
     end
 
     true 
-  rescue SystemError
-    return false
+    rescue SystemError
+      return false
+    end 
   end 
 end 
 
