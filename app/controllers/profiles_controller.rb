@@ -8,6 +8,7 @@ class ProfilesController < ApplicationController
   end 
   
   def update
+    @profile = ProfileForm.new
     if @profile.update(account_update_params)
       redirect_to profile_path(@profile), notice: "#{User.profile.name}のプロフィールを変更しました。"
     else 
