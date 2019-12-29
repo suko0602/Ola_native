@@ -2,7 +2,7 @@ class LikesController < ApplicationController
   before_action :set_answer, only: %i(create)
 
   def create 
-    @like = @answer.likes&.find_by(user: current_user)
+    @like = @answer.likes&.find_by(answer_id: params[:answer_id])
     if @like
       @like.destroy
       head :ok 

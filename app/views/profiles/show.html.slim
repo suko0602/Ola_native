@@ -2,7 +2,7 @@ h1 プロフィール
 p アバター
 p= current_user.avatar? ? image_tag(current_user.avatar.url) : image_tag('fallback/default_user_avatar.png')
 p　名前　
-p= @profile.name 
+p= @profile&.name 
 p 母国語
 p= @user&.native_language&.name
 p 学んでいる言語

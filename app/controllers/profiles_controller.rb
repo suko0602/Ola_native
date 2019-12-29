@@ -1,5 +1,19 @@
 class ProfilesController < ApplicationController
   before_action :set_profile, only: %i(show)
+  
+  def new 
+    @profile = ProfileForm.new 
+  end
+
+  def create 
+    @profile = ProfileForm.new(account_update_params)
+    if @profile.save
+      redirect_to profiles_path(@porfile)
+    else
+      render :new
+    end
+  end
+
   def show
   end
   
@@ -8,7 +22,7 @@ class ProfilesController < ApplicationController
   end 
   
   def update
-    @profile = ProfileForm.find
+    @profile = ProfileForm
     if @profile.update(account_update_params)
       redirect_to profile_path(@profile), notice: "#{User.profile.name}のプロフィールを変更しました。"
     else 
